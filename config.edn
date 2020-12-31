@@ -1,0 +1,5 @@
+{:http-port "8500" ; #or [#env $PORT 32000]
+ :pub-only true
+ :nats-uri "nats://localhost:4222"
+ :nats-reply-timeout-ms 1000}
+

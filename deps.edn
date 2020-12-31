@@ -1,0 +1,28 @@
+{:paths ["src" "classes"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        aero/aero {:mvn/version "1.1.6"}
+        io.nats/jnats {:mvn/version "2.8.0"}
+        com.google.flatbuffers/flatbuffers-java {:mvn/version "1.12.0"}
+        com.appsflyer/donkey {:mvn/version "0.1.0"}
+        clj-commons/iapetos {:mvn/version "0.1.11"}
+        io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.0"}
+        com.taoensso/timbre {:mvn/version "5.1.0"}}
+
+
+ 
+ :aliases {:dev       {:main-opts  ["-m" "nrepl.cmdline" "-b" "0.0.0.0" "-p" "31000" "--middleware" "[cider.nrepl/cider-middleware]"] 
+                       :extra-deps  {nrepl/nrepl {:mvn/version "0.8.3"} 
+                                     byte-streams/byte-streams {:mvn/version "0.2.4"}
+                                     cider/cider-nrepl {:mvn/version "0.25.4"}
+                                     ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
+                                     org.clojure/tools.logging {:mvn/version "1.1.0"}}}
+
+           :flatc {:extra-paths ["tools"]
+                   :exec-fn tools/flatc
+                   :exec-args {}}
+
+           :start {:exec-fn eisenbeton.core/start-eisenbeton
+                   :exec-args {}}}
+
+
+ }
