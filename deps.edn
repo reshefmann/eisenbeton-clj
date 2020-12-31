@@ -6,13 +6,13 @@
         com.appsflyer/donkey {:mvn/version "0.1.0"}
         clj-commons/iapetos {:mvn/version "0.1.11"}
         io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.0"}
+        byte-streams/byte-streams {:mvn/version "0.2.4"}
         com.taoensso/timbre {:mvn/version "5.1.0"}}
 
 
  
  :aliases {:dev       {:main-opts  ["-m" "nrepl.cmdline" "-b" "0.0.0.0" "-p" "31000" "--middleware" "[cider.nrepl/cider-middleware]"] 
                        :extra-deps  {nrepl/nrepl {:mvn/version "0.8.3"} 
-                                     byte-streams/byte-streams {:mvn/version "0.2.4"}
                                      cider/cider-nrepl {:mvn/version "0.25.4"}
                                      ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
                                      org.clojure/tools.logging {:mvn/version "1.1.0"}}}
