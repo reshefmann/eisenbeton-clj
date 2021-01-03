@@ -56,6 +56,8 @@
                 (on-error-cb ex)))))))) 
 
 
+
+
 (defn send-request-to-nats
   [nats-conn 
    subject
@@ -69,6 +71,8 @@
       timeout
       on-success-cb
       on-error-cb)))
+
+
 
 
 (defn eisen-response-to-ring
@@ -96,6 +100,7 @@
         (respond {:status 200})))))
 
 
+
 (defn server 
   [donkey nats-conn metrics config]
   (let [donkey-server (create-server 
@@ -106,7 +111,11 @@
                          :routes [{:handler (fn [req] (pring/metrics-response metrics))
                                    :handler-mode :blocking
                                    :path "/metrics"}
-                                  {:handler (make-donkey-handler nats-conn (-> config :nats-reply-timeout-ms java.time.Duration/ofMillis))}]})]
+                                  {:handler (make-donkey-handler 
+                                              nats-conn 
+                                              (-> config 
+                                                  :nats-reply-timeout-ms 
+                                                  java.time.Duration/ofMillis))}]})]
     (-> donkey-server 
         start 
         (on-success (fn [_] (.info logger "started"))))
@@ -116,8 +125,7 @@
 (defn start-eisenbeton
   "Starts the eisenbeton server"
   [args]
-  (let [
-        config (read-config "config.edn")
+  (let [config (read-config "config.edn")
         metric-reg (com.codahale.metrics.MetricRegistry.)
         promethues-reg (-> (prometheus/collector-registry)
                            (prometheus/register 
@@ -133,7 +141,11 @@
 
 
 
-
+(comment
+  (def s (start-eisenbeton {}))
+  (com.appsflyer.donkey.server/stop s) 
+  
+  )
 
 
 

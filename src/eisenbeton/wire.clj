@@ -54,7 +54,7 @@
         uri (.createString builder ^String uri)
         path (.createString builder ^String path)
         method (.createString builder ^String method)
-        content-type (.createString builder ^String content-type)
+        content-type (.createString builder (or ^String content-type ""))
         content (EisenRequest/createContentVector builder ^bytes content)
         builder (doto builder
                   (EisenRequest/startEisenRequest)

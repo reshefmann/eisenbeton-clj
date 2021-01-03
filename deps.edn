@@ -6,8 +6,7 @@
         com.appsflyer/donkey {:mvn/version "0.1.0"}
         clj-commons/iapetos {:mvn/version "0.1.11"}
         io.prometheus/simpleclient_dropwizard {:mvn/version "0.8.0"}
-        byte-streams/byte-streams {:mvn/version "0.2.4"}
-        com.taoensso/timbre {:mvn/version "5.1.0"}}
+        byte-streams/byte-streams {:mvn/version "0.2.4"}}
 
 
  
